@@ -5,4 +5,8 @@ public class CourseFoundException extends RuntimeException {
     public CourseFoundException() {
         super("Curso já existente");
     }
+
+    public CourseFoundException(String message) {
+        super(message);
+    }
 }
