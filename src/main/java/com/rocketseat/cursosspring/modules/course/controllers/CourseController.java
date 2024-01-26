@@ -70,7 +70,7 @@ public class CourseController {
     }
 
     @GetMapping("/")
-    public ResponseEntity select(CourseRequestDTO courseRequestDTO) {
+    public ResponseEntity select(@Valid @RequestBody CourseRequestDTO courseRequestDTO) {
         try {
             var result = this.courseUseCase.select(courseRequestDTO);
             return ResponseEntity.ok().body(result);

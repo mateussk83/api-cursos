@@ -44,25 +44,7 @@ public class CourseUseCase {
 
     public List<CourseEntity> select(CourseRequestDTO courseRequestDTO) {
 
-        this.courseRepository.findByName(courseRequestDTO.getName())
-                .ifPresent((course) -> {
-                    throw new CourseFoundException();
-                });
-
-        var course = CourseEntity.builder()
-                .active(true)
-                .name(courseRequestDTO.getName())
-                .category(courseRequestDTO.getCategory())
-                .build();
-
-        this.courseRepository.save(course);
-
-        return CourseResponseDTO.builder()
-                .id(course.getId())
-                .category(course.getCategory())
-                .active(true)
-                .name(course.getName())
-                .build();
+        return this.courseRepository.findByNameOrCategory(courseRequestDTO.getName(), courseRequestDTO.getCategory());
     }
 
     public CourseResponseDTO update(UUID id, CourseRequestDTO courseRequestDTO) {
