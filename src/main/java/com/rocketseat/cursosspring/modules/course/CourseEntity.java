@@ -25,7 +25,7 @@ public class CourseEntity {
 
     private String name;
     private String category;
-    private boolean active;
+    private Boolean active;
 
     @CreationTimestamp
     private String created_at;
